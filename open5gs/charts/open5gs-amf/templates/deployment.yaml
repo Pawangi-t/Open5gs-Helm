@@ -75,9 +75,9 @@ spec:
           {{- end }}
           {{- if .Values.args }}
           args: {{- include "common.tplvalues.render" (dict "value" .Values.args "context" $) | nindent 12 }}
-          {{- else }}
-          args: 
-            - "open5gs-amfd"
+            #{{- else }}
+            #args: 
+            #  - "open5gs-amfd"
           {{- end }}
           {{- if .Values.containerSecurityContext.enabled }}
           securityContext: {{- omit .Values.containerSecurityContext "enabled" | toYaml | nindent 12 }}

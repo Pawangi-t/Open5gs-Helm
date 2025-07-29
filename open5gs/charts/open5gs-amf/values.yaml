@@ -9,6 +9,7 @@
 ##
 global:
   imageRegistry: ""
+  tag: "latest"
   ## E.g.
   ## imagePullSecrets:
   ##   - myRegistryKeySecretName
@@ -55,14 +56,14 @@ extraDeploy: []
 ##
 image:
   registry: docker.io
-  repository: gradiant/open5gs
-  tag: "2.7.0"
+  repository: open5gs_amf
+  tag: "latest"
   digest: ""
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: https://kubernetes.io/docs/user-guide/images/#pre-pulling-images
   ##
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   ## Optionally specify an array of imagePullSecrets.
   ## Secrets must be manually created in the namespace.
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
@@ -115,10 +116,10 @@ customOpen5gsConfig: {}
 replicaCount: 1
 ## @param command Override default container command (useful when using custom images)
 ##
-command: []
+command: ["./open5gs-amfd","-c"]
 ## @param args Override default container args (useful when using custom images)
 ##
-args: []
+args: ["/opt/open5gs/etc/open5gs/amf.yaml"]
 ## @param updateStrategy.type Update strategy - only really applicable for deployments with RWO PVs attached
 ## If replicas = 1, an update can get "stuck", as the previous pod remains attached to the
 ## PV, and the "incoming" pod can never start. Changing the strategy to "Recreate" will
@@ -243,7 +244,7 @@ resources:
 ## @param podSecurityContext.fsGroup open5gs-amf pods' group ID
 ##
 podSecurityContext:
-  enabled: true
+  enabled: false
   fsGroup: 1001
 ## Configure Container Security Context (only main container)
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container
@@ -252,7 +253,7 @@ podSecurityContext:
 ## @param containerSecurityContext.runAsNonRoot Set Controller container's Security Context runAsNonRoot
 ##
 containerSecurityContext:
-  enabled: true
+  enabled: false
   runAsUser: 1001
   runAsNonRoot: true
 ## Configure extra options for startup probe
@@ -282,7 +283,7 @@ startupProbe:
 ## @param livenessProbe.successThreshold Success threshold for livenessProbe
 ##
 livenessProbe:
-  enabled: true
+  enabled: false
   initialDelaySeconds: 600
   periodSeconds: 10
   timeoutSeconds: 5
@@ -298,7 +299,7 @@ livenessProbe:
 ## @param readinessProbe.successThreshold Success threshold for readinessProbe
 ##
 readinessProbe:
-  enabled: true
+  enabled: false
   initialDelaySeconds: 30
   periodSeconds: 5
   timeoutSeconds: 1

@@ -38,10 +38,10 @@ Create a default mongo arbiter service name which can be overridden.
 {{- end }}
 
 {{/*
-Return the proper MongoDB&reg; image name
+Return the proper MongoDB&reg; image name Pawan: don,t read from global
 */}}
 {{- define "mongodb.image" -}}
-{{- include "common.images.image" (dict "imageRoot" .Values.image "global" .Values.global) -}}
+{{- include "common.images.image" (dict "imageRoot" .Values.image "global" .Values.image) -}}
 {{- end -}}
 
 {{/*
@@ -55,7 +55,7 @@ Return the proper image name (for the metrics image)
 Return the proper image name (for the init container volume-permissions image)
 */}}
 {{- define "mongodb.volumePermissions.image" -}}
-{{- include "common.images.image" (dict "imageRoot" .Values.volumePermissions.image "global" .Values.global) -}}
+{{- include "common.images.image" (dict "imageRoot" .Values.volumePermissions.image "global" .Values.volumePermissions.image) -}}
 {{- end -}}
 
 {{/*

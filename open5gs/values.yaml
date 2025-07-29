@@ -1,7 +1,7 @@
 dbURI: "mongodb://{{ .Release.Name }}-mongodb/open5gs"
 
 populate:
-  enabled: true
+  enabled: false
   image:
     registry: docker.io
     repository: gradiant/open5gs-dbctl
@@ -13,56 +13,61 @@ populate:
   #  - open5gs-dbctl add_ue_with_apn 999700000000002 465B5CE8B199B49FAA5F0A2EE238A6BC E8ED289DEBA952E4283B54E88E6183CA internet
   #  - open5gs-dbctl add_ue_with_slice 999700000000003 465B5CE8B199B49FAA5F0A2EE238A6BC E8ED289DEBA952E4283B54E88E6183CA internet 1 111111
 
+namespaceOverride: open5gs
+global:
+  enabled: true
+  imageRegistry: "192.168.1.153:5000"
+  tag: latest
 # Common
 mongodb:
   enabled: true
   auth:
-    enabled: false
+    enabled: true
 smf:
-  enabled: true
+  enabled: false
 upf:
-  enabled: true
+  enabled: false
 webui:
-  enabled: true
+  enabled: false
 
 # 4G
 hss:
-  enabled: true
+  enabled: false
   mongodb:
     enabled: false
 mme:
-  enabled: true
+  enabled: false
 pcrf:
-  enabled: true
+  enabled: false
   mongodb:
     enabled: false
 sgwc:
-  enabled: true
+  enabled: false
 sgwu:
-  enabled: true
+  enabled: false
 
 # 5G
 amf:
   enabled: true
 ausf:
-  enabled: true
+  enabled: false
 bsf:
-  enabled: true
+  enabled: false
 nrf:
   enabled: true
 nssf:
-  enabled: true
+  enabled: false
 pcf:
-  enabled: true
+  enabled: false
   mongodb:
     enabled: false
 scp:
   enabled: true
   mongodb:
-    enabled: false
+    enabled: true
 udm:
-  enabled: true
+  enabled: false
 udr:
-  enabled: true
+  enabled: false
   mongodb:
-    enabled: false
+    enabled: true

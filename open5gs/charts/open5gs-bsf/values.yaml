@@ -55,14 +55,14 @@ extraDeploy: []
 ##
 image:
   registry: docker.io
-  repository: gradiant/open5gs
+  repository: open5gs_bsf
   tag: "2.7.0"
   digest: ""
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: https://kubernetes.io/docs/user-guide/images/#pre-pulling-images
   ##
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   ## Optionally specify an array of imagePullSecrets.
   ## Secrets must be manually created in the namespace.
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
@@ -94,10 +94,10 @@ customOpen5gsConfig: {}
 replicaCount: 1
 ## @param command Override default container command (useful when using custom images)
 ##
-command: []
+command: ["./open5gs-bsfd","-c"]
 ## @param args Override default container args (useful when using custom images)
 ##
-args: []
+args: ["/opt/open5gs/etc/open5gs/bsf.yaml"]
 ## @param updateStrategy.type Update strategy - only really applicable for deployments with RWO PVs attached
 ## If replicas = 1, an update can get "stuck", as the previous pod remains attached to the
 ## PV, and the "incoming" pod can never start. Changing the strategy to "Recreate" will
