@@ -383,7 +383,7 @@ services:
   ngap:
     ## @param service.type Kubernetes Service type
     ##
-    type: ClusterIP
+    type: NodePort
     ## @param service.ports.ngap Service HTTP port
     ##
     ports:

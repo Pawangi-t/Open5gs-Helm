@@ -13,7 +13,7 @@ populate:
   #  - open5gs-dbctl add_ue_with_apn 999700000000002 465B5CE8B199B49FAA5F0A2EE238A6BC E8ED289DEBA952E4283B54E88E6183CA internet
   #  - open5gs-dbctl add_ue_with_slice 999700000000003 465B5CE8B199B49FAA5F0A2EE238A6BC E8ED289DEBA952E4283B54E88E6183CA internet 1 111111
 
-namespaceOverride: open5gs
+    #namespaceOverride: open5gs
 global:
   enabled: true
   imageRegistry: "192.168.1.153:5000"
@@ -24,11 +24,11 @@ mongodb:
   auth:
     enabled: true
 smf:
-  enabled: false
+  enabled: true
 upf:
-  enabled: false
+  enabled: true
 webui:
-  enabled: false
+  enabled: true
 
 # 4G
 hss:
@@ -50,24 +50,24 @@ sgwu:
 amf:
   enabled: true
 ausf:
-  enabled: false
+  enabled: true
 bsf:
-  enabled: false
+  enabled: true
 nrf:
   enabled: true
 nssf:
-  enabled: false
+  enabled: true
 pcf:
-  enabled: false
+  enabled: true
   mongodb:
-    enabled: false
+    enabled: true
 scp:
   enabled: true
   mongodb:
     enabled: true
 udm:
-  enabled: false
+  enabled: true
 udr:
-  enabled: false
+  enabled: true
   mongodb:
     enabled: true

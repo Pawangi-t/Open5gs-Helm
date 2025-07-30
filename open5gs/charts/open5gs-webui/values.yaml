@@ -295,7 +295,7 @@ services:
   http:
     ## @param service.type Kubernetes Service type
     ##
-    type: ClusterIP
+    type: NodePort
     ## @param service.ports.http Service HTTP port
     ##
     ports:

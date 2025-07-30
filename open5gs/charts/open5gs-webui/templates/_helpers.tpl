@@ -2,7 +2,7 @@
 Return the proper Open5gs webui image name
 */}}
 {{- define "open5gs.webui.image" -}}
-{{- include "common.images.image" (dict "imageRoot" .Values.image "global" .Values.global) -}}
+{{- include "common.images.image" (dict "imageRoot" .Values.image "global" .Values.image) -}}
 {{- end -}}
 
 {{/*
